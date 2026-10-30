@@ -1,0 +1,231 @@
+/* Estilos comunes de las tres visualizaciones de la PEC 2.
+   Los colores se definen como variables para que el modo oscuro cambie en un solo sitio. */
+
+:root {
+  color-scheme: light;
+  --pagina: #f9f9f7;
+  --superficie: #fcfcfb;
+  --superficie-2: #f0efec;
+  --texto: #0b0b0b;
+  --texto-2: #52514e;
+  --texto-tenue: #898781;
+  --rejilla: #e1e0d9;
+  --linea-base: #c3c2b7;
+  --borde: rgba(11, 11, 11, 0.10);
+  --enlace: #1c5cab;
+  --sombra: 0 6px 24px rgba(11, 11, 11, 0.12);
+
+  /* Paleta categórica de referencia (orden fijo) */
+  --serie-azul: #2a78d6;
+  --serie-naranja: #eb6834;
+  --serie-aqua: #1baf7a;
+  --serie-amarillo: #eda100;
+
+  --fuente: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+    --pagina: #0d0d0d;
+    --superficie: #1a1a19;
+    --superficie-2: #232322;
+    --texto: #f0efec;
+    --texto-2: #c3c2b7;
+    --texto-tenue: #898781;
+    --rejilla: #2c2c2a;
+    --linea-base: #383835;
+    --borde: rgba(255, 255, 255, 0.10);
+    --enlace: #86b6ef;
+    --sombra: 0 6px 24px rgba(0, 0, 0, 0.5);
+    --serie-azul: #3987e5;
+    --serie-naranja: #d95926;
+    --serie-aqua: #199e70;
+    --serie-amarillo: #c98500;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --pagina: #0d0d0d;
+  --superficie: #1a1a19;
+  --superficie-2: #232322;
+  --texto: #f0efec;
+  --texto-2: #c3c2b7;
+  --texto-tenue: #898781;
+  --rejilla: #2c2c2a;
+  --linea-base: #383835;
+  --borde: rgba(255, 255, 255, 0.10);
+  --enlace: #86b6ef;
+  --sombra: 0 6px 24px rgba(0, 0, 0, 0.5);
+  --serie-azul: #3987e5;
+  --serie-naranja: #d95926;
+  --serie-aqua: #199e70;
+  --serie-amarillo: #c98500;
+}
+
+* { box-sizing: border-box; }
+
+figure { margin: 0; }
+
+html, body {
+  margin: 0;
+  background: var(--pagina);
+  color: var(--texto);
+  font-family: var(--fuente);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+.pagina {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+
+.migas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  font-size: 14px;
+  color: var(--texto-2);
+}
+
+a { color: var(--enlace); }
+.migas a { text-decoration: none; }
+.migas a:hover { text-decoration: underline; }
+
+h1 {
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1.2;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 18px 0 8px;
+  max-width: 34ch;
+  text-wrap: balance;
+}
+
+.subtitulo {
+  margin: 0 0 20px;
+  max-width: 78ch;
+  color: var(--texto-2);
+}
+
+.tarjeta {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: var(--texto-2);
+}
+
+.controles label { display: inline-flex; align-items: center; gap: 8px; }
+
+select, input[type="search"], input[type="text"], button {
+  font: inherit;
+  color: var(--texto);
+  background: var(--superficie);
+  border: 1px solid var(--linea-base);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+button { cursor: pointer; }
+button:hover { background: var(--superficie-2); }
+input[type="range"] { accent-color: var(--serie-azul); }
+
+:focus-visible { outline: 2px solid var(--serie-azul); outline-offset: 2px; }
+
+.grafico svg { display: block; width: 100%; height: auto; overflow: visible; }
+.grafico svg text { font-family: var(--fuente); }
+
+/* Halo del color de la superficie para que el texto se lea sobre las marcas */
+.halo {
+  paint-order: stroke;
+  stroke: var(--superficie);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.nota {
+  margin: 14px 0 0;
+  max-width: 78ch;
+  font-size: 15px;
+  color: var(--texto-2);
+}
+
+.nota strong { color: var(--texto); }
+
+.fuente {
+  margin-top: 18px;
+  font-size: 13px;
+  color: var(--texto-2);
+}
+
+details.tabla { margin-top: 18px; }
+details.tabla summary { cursor: pointer; color: var(--enlace); font-size: 15px; }
+details.tabla .contenedor-tabla { max-height: 420px; overflow: auto; margin-top: 8px; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--rejilla); vertical-align: top; }
+th { color: var(--texto-2); font-weight: 600; position: sticky; top: 0; background: var(--superficie); }
+.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.ficha {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  font-size: 14px;
+}
+
+.ficha div { background: var(--superficie); border: 1px solid var(--borde); border-radius: 10px; padding: 10px 12px; }
+.ficha dt { color: var(--texto-2); font-size: 13px; }
+.ficha dd { margin: 2px 0 0; }
+
+/* Tooltip: el valor manda, la etiqueta acompaña */
+.tooltip {
+  position: fixed;
+  z-index: 20;
+  pointer-events: none;
+  max-width: 320px;
+  padding: 8px 10px;
+  background: var(--superficie);
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  box-shadow: var(--sombra);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.tooltip[hidden] { display: none; }
+.tooltip .valor { display: block; font-size: 15px; font-weight: 650; }
+.tooltip .etiqueta { display: block; color: var(--texto-2); }
+
+.muestra {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

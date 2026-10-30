@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PEC 2 · Visualización de datos</title>
+  <meta name="description" content="Tres técnicas de visualización (pie chart, flow map y hyperbolic tree) aplicadas a datos abiertos de Red Eléctrica, el INE y Eurostat.">
+  <link rel="stylesheet" href="assets/estilo.css">
+  <style>
+    .tecnicas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .tecnica {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.15s, transform 0.15s;
+    }
+
+    .tecnica:hover { border-color: var(--linea-base); transform: translateY(-2px); }
+    .tecnica svg { width: 100%; max-width: 220px; height: auto; align-self: center; margin: 4px 0 6px; }
+    .tecnica .grupo { font-size: 13px; color: var(--texto-2); }
+    .tecnica h2 { margin: 0; font-size: 22px; line-height: 1.2; }
+    .tecnica .pregunta { margin: 0; font-size: 16px; }
+    .tecnica .datos { margin: 0; font-size: 14px; color: var(--texto-2); }
+    .tecnica .ir { margin-top: auto; color: var(--enlace); font-weight: 600; }
+
+    .icono-gris { fill: var(--linea-base); }
+    .icono-trazo { fill: none; stroke: var(--serie-azul); stroke-linecap: round; }
+    .icono-borde { fill: var(--superficie-2); stroke: var(--rejilla); }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <nav class="migas"><span>Visualización de datos · UOC</span><span>PEC 2</span></nav>
+
+    <h1>Tres técnicas de visualización, tres conjuntos de datos abiertos</h1>
+    <p class="subtitulo">
+      Cada técnica tiene su propia página con una URL pública. Los datos son abiertos (Red Eléctrica, INE y Eurostat)
+      y se eligieron para encajar con la esencia de cada técnica: parte de un todo, movimiento entre lugares y una jerarquía grande.
+    </p>
+
+    <section class="tecnicas" aria-label="Visualizaciones">
+      <a class="tarjeta tecnica" href="pie/">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="icono-gris" cx="60" cy="60" r="50"/>
+          <path d="M60 60 L60 10 A50 50 0 1 1 37.3 104.5 Z" style="fill: var(--serie-aqua)"/>
+        </svg>
+        <span class="grupo">Técnica 1 · Grupo I (básicas y populares)</span>
+        <h2>Pie chart</h2>
+        <p class="pregunta">¿Qué parte de la electricidad que se genera en España es ya renovable?</p>
+        <p class="datos">Red Eléctrica · estructura de la generación 2025</p>
+        <span class="ir">Ver la visualización →</span>
+      </a>
+
+      <a class="tarjeta tecnica" href="flowmap/">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="icono-gris" cx="22" cy="86" r="5"/>
+          <circle class="icono-gris" cx="60" cy="40" r="5"/>
+          <circle class="icono-gris" cx="100" cy="82" r="5"/>
+          <path class="icono-trazo" d="M60 40 Q92 44 98 76" stroke-width="8"/>
+          <path class="icono-trazo" d="M60 40 Q28 46 24 80" stroke-width="4"/>
+          <path class="icono-trazo" d="M24 92 Q60 112 94 90" stroke-width="2"/>
+        </svg>
+        <span class="grupo">Técnica 2 · Grupo II (habituales y específicas)</span>
+        <h2>Flow map</h2>
+        <p class="pregunta">¿Entre qué comunidades autónomas se muda la gente y cuáles ganan o pierden población?</p>
+        <p class="datos">INE · migraciones interautonómicas 2024</p>
+        <span class="ir">Ver la visualización →</span>
+      </a>
+
+      <a class="tarjeta tecnica" href="hypertree/">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <circle class="icono-borde" cx="60" cy="60" r="54"/>
+          <g class="icono-trazo" stroke-width="1.5" style="stroke: var(--linea-base)">
+            <path d="M60 60 L60 26 M60 60 L90 76 M60 60 L30 76"/>
+            <path d="M60 26 Q52 18 46 12 M60 26 Q68 18 74 12 M90 76 Q100 78 106 80 M90 76 Q96 86 100 92 M30 76 Q20 78 14 80 M30 76 Q24 86 20 92"/>
+          </g>
+          <circle cx="60" cy="60" r="7" style="fill: var(--texto)"/>
+          <g style="fill: var(--serie-azul)">
+            <circle cx="60" cy="26" r="5"/><circle cx="90" cy="76" r="5"/><circle cx="30" cy="76" r="5"/>
+            <circle cx="46" cy="12" r="2.5"/><circle cx="74" cy="12" r="2.5"/><circle cx="106" cy="80" r="2.5"/>
+            <circle cx="100" cy="92" r="2.5"/><circle cx="14" cy="80" r="2.5"/><circle cx="20" cy="92" r="2.5"/>
+          </g>
+        </svg>
+        <span class="grupo">Técnica 3 · Grupo III (menos habituales)</span>
+        <h2>Hyperbolic tree</h2>
+        <p class="pregunta">¿Cómo se organiza la clasificación oficial de actividades económicas y dónde concentra el detalle?</p>
+        <p class="datos">INE · estructura completa de la CNAE-2025</p>
+        <span class="ir">Ver la visualización →</span>
+      </a>
+    </section>
+
+    <p class="fuente">
+      Visualizaciones hechas con D3.js v7 y publicadas con GitHub Pages.
+      Datos: <a href="https://www.ree.es/es/datos/generacion/estructura-generacion">Red Eléctrica (REData)</a>,
+      <a href="https://www.ine.es/">INE</a> y <a href="https://ec.europa.eu/eurostat/web/gisco">Eurostat GISCO</a>
+      (© EuroGeographics para los límites administrativos).
+      Código, datos y script de preparación en <a href="https://github.com/ilasierrafc/pec2-visualizacion">GitHub</a>.
+    </p>
+  </div>
+</body>
+</html>

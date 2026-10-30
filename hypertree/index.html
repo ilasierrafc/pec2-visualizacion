@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CNAE-2025 · Hyperbolic tree</title>
+  <meta name="description" content="Árbol hiperbólico interactivo con la estructura completa de la Clasificación Nacional de Actividades Económicas CNAE-2025 (INE).">
+  <link rel="stylesheet" href="../assets/estilo.css">
+  <style>
+    :root {
+      --disco: #f4f3ef;
+      --arista: #c9c7bf;
+      --nivel-raiz: var(--texto);
+      --nivel-seccion: #184f95;
+      --nivel-division: #2a78d6;
+      --nivel-grupo: #5598e7;
+      --nivel-clase: #86b6ef;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:where(:not([data-theme="light"])) {
+        --disco: #20201f;
+        --arista: #45443f;
+        --nivel-seccion: #b7d3f6;
+        --nivel-division: #86b6ef;
+        --nivel-grupo: #5598e7;
+        --nivel-clase: #2a78d6;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --disco: #20201f;
+      --arista: #45443f;
+      --nivel-seccion: #b7d3f6;
+      --nivel-division: #86b6ef;
+      --nivel-grupo: #5598e7;
+      --nivel-clase: #2a78d6;
+    }
+
+    .buscador input { width: min(300px, 72vw); }
+    .aviso-busqueda { min-height: 1.5em; color: var(--texto-2); }
+
+    .leyenda { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; }
+    .leyenda > span { display: inline-flex; align-items: center; gap: 6px; }
+
+    .disposicion {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    @media (min-width: 960px) {
+      .disposicion { grid-template-columns: minmax(0, 1fr) 320px; }
+    }
+
+    figure.grafico { margin: 0; padding: 8px; }
+
+    #arbol {
+      max-width: 760px;
+      margin: 0 auto;
+      cursor: grab;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    #arbol.arrastrando { cursor: grabbing; }
+
+    .disco { fill: var(--disco); stroke: var(--rejilla); stroke-width: 1px; }
+    .arista { fill: none; stroke: var(--arista); }
+
+    .nodo { stroke: transparent; cursor: pointer; }
+    .nodo.raiz { fill: var(--nivel-raiz); }
+    .nodo.seccion { fill: var(--nivel-seccion); }
+    .nodo.division { fill: var(--nivel-division); }
+    .nodo.grupo { fill: var(--nivel-grupo); }
+    .nodo.clase { fill: var(--nivel-clase); }
+
+    .anillo { fill: none; stroke: var(--texto); stroke-width: 2px; pointer-events: none; }
+
+    .etiqueta-nodo { fill: var(--texto); pointer-events: none; }
+    .etiqueta-nodo.halo { stroke: var(--disco); }
+    .etiqueta-foco { font-weight: 650; }
+
+    .panel { font-size: 14px; }
+    .panel .ruta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 13px; color: var(--texto-2); }
+    .panel .ruta button { padding: 2px 8px; border-radius: 999px; font-size: 13px; }
+    .panel .ruta [aria-current] { color: var(--texto); font-weight: 600; }
+    .panel .nivel-foco { margin: 14px 0 0; color: var(--texto-2); font-size: 13px; }
+    .panel h2 { margin: 2px 0 6px; font-size: 18px; line-height: 1.3; font-weight: 650; }
+    .panel .recuento { margin: 0 0 12px; color: var(--texto-2); }
+    .panel h3 { margin: 0; font-size: 13px; font-weight: 600; color: var(--texto-2); }
+    .panel .hijos { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; max-height: 380px; overflow: auto; }
+    .panel .hijos button { width: 100%; text-align: left; line-height: 1.3; border-color: var(--rejilla); }
+    .panel .hijos .cuenta { display: block; font-size: 12px; color: var(--texto-2); }
+    .panel .sin-hijos { margin: 6px 0 0; color: var(--texto-2); }
+
+    td.titulo-arbol { white-space: normal; }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <nav class="migas">
+      <a href="../">PEC 2 · Visualización de datos</a>
+      <span>Técnica 3 de 3 · Hyperbolic tree</span>
+    </nav>
+
+    <h1>La CNAE-2025 dedica más de un tercio de sus actividades a la industria</h1>
+    <p class="subtitulo">
+      Estructura completa de la Clasificación Nacional de Actividades Económicas:
+      <span data-dato="secciones">22</span> secciones, <span data-dato="divisiones">87</span> divisiones,
+      <span data-dato="grupos">287</span> grupos y <span data-dato="clases">664</span> clases.
+      Pulsa un nodo para llevarlo al centro; arrastra el fondo para desplazarte.
+    </p>
+
+    <div class="controles">
+      <label class="buscador">Buscar actividad o código
+        <input type="search" id="buscar" list="opciones-cnae" placeholder="p. ej. 62.10 o energía" autocomplete="off">
+      </label>
+      <datalist id="opciones-cnae"></datalist>
+      <button type="button" id="volver-raiz">Volver a la raíz</button>
+      <span class="leyenda" aria-label="Color según el nivel">
+        <span><span class="muestra" style="background: var(--nivel-seccion)"></span>Sección</span>
+        <span><span class="muestra" style="background: var(--nivel-division)"></span>División</span>
+        <span><span class="muestra" style="background: var(--nivel-grupo)"></span>Grupo</span>
+        <span><span class="muestra" style="background: var(--nivel-clase)"></span>Clase</span>
+      </span>
+      <span class="aviso-busqueda" id="aviso-busqueda" aria-live="polite"></span>
+    </div>
+
+    <div class="disposicion">
+      <figure class="tarjeta grafico">
+        <svg id="arbol" viewBox="0 0 800 800" role="img"
+             aria-label="Árbol hiperbólico de la CNAE-2025. Para navegar con el teclado usa el buscador o los botones del panel."></svg>
+      </figure>
+
+      <aside class="tarjeta panel" aria-label="Nodo seleccionado">
+        <nav class="ruta" id="ruta" aria-label="Ruta en la jerarquía"></nav>
+        <div aria-live="polite">
+          <p class="nivel-foco" id="nivel-foco"></p>
+          <h2 id="titulo-foco">CNAE-2025</h2>
+          <p class="recuento" id="recuento-foco"></p>
+        </div>
+        <h3 id="titulo-hijos">Contiene</h3>
+        <ul class="hijos" id="hijos"></ul>
+        <p class="sin-hijos" id="sin-hijos" hidden>Es una clase: el último nivel de la clasificación.</p>
+      </aside>
+    </div>
+
+    <p class="nota">
+      <strong>Cómo leer.</strong> El nodo del centro y sus vecinos se ven grandes; el resto se comprime hacia el borde
+      (foco + contexto). El plano hiperbólico tiene cada vez más espacio a medida que te alejas del centro —crece de forma
+      exponencial, igual que una jerarquía nivel a nivel—, por eso caben los <span data-dato="nodos">1.061</span> nodos sin
+      perder el contexto.
+      <strong>Lo que muestra.</strong> La sección C (Industria manufacturera) reúne <span data-dato="divisionesC">24</span>
+      de las <span data-dato="divisiones">87</span> divisiones y <span data-dato="clasesC">238</span> de las
+      <span data-dato="clases">664</span> clases (<span data-dato="pctC">35,8 %</span>), mientras que la K
+      (telecomunicaciones, programación informática…) solo tiene <span data-dato="clasesK">9</span> clases y la G
+      (comercio) agrupa <span data-dato="clasesG">83</span> clases en apenas <span data-dato="divisionesG">2</span> divisiones.
+    </p>
+
+    <details class="tabla" id="detalle-tabla">
+      <summary>Ver la estructura completa</summary>
+      <div class="contenedor-tabla">
+        <table>
+          <thead><tr><th>Código</th><th>Nivel</th><th>Título</th></tr></thead>
+          <tbody id="cuerpo-tabla"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <dl class="ficha">
+      <div><dt>Técnica</dt><dd>Hyperbolic tree (árbol hiperbólico; Lamping, Rao y Pirolli, Xerox PARC, 1995) · Grupo III</dd></div>
+      <div><dt>Datos</dt><dd>INE: estructura completa de la CNAE-2025, <span data-dato="nodos">1.061</span> nodos en 4 niveles</dd></div>
+      <div><dt>Herramienta</dt><dd>D3.js v7 + implementación propia del disco de Poincaré · GitHub Pages</dd></div>
+      <div><dt>Por qué esta técnica</dt><dd>Jerarquía grande que crece exponencialmente por niveles: un árbol normal no cabe en pantalla</dd></div>
+    </dl>
+
+    <p class="fuente">
+      Fuente: INE, Clasificación Nacional de Actividades Económicas CNAE-2025 (Real Decreto 10/2025),
+      <a href="https://www.ine.es/daco/daco42/clasificaciones/cnae25/Estructura_CNAE2025.xlsx">estructura completa</a>.
+      Elaboración propia.
+    </p>
+  </div>
+
+  <div class="tooltip" role="tooltip" hidden></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="hypertree.js"></script>
+</body>
+</html>

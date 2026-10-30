@@ -1,0 +1,343 @@
+origen_id,origen,destino_id,destino,personas,anyo
+ES30,Madrid,ES42,Castilla-La Mancha,32137,2024
+ES42,Castilla-La Mancha,ES30,Madrid,24552,2024
+ES61,Andalucía,ES30,Madrid,15132,2024
+ES30,Madrid,ES61,Andalucía,14056,2024
+ES30,Madrid,ES52,C. Valenciana,12548,2024
+ES30,Madrid,ES41,Castilla y León,12230,2024
+ES41,Castilla y León,ES30,Madrid,10999,2024
+ES51,Cataluña,ES52,C. Valenciana,10381,2024
+ES51,Cataluña,ES30,Madrid,9878,2024
+ES51,Cataluña,ES61,Andalucía,9700,2024
+ES61,Andalucía,ES51,Cataluña,9581,2024
+ES52,C. Valenciana,ES30,Madrid,9429,2024
+ES30,Madrid,ES51,Cataluña,9182,2024
+ES52,C. Valenciana,ES51,Cataluña,8817,2024
+ES61,Andalucía,ES52,C. Valenciana,7515,2024
+ES42,Castilla-La Mancha,ES52,C. Valenciana,6146,2024
+ES52,C. Valenciana,ES61,Andalucía,5980,2024
+ES30,Madrid,ES70,Canarias,5458,2024
+ES30,Madrid,ES11,Galicia,5446,2024
+ES62,Murcia,ES52,C. Valenciana,5378,2024
+ES52,C. Valenciana,ES62,Murcia,5053,2024
+ES51,Cataluña,ES53,Illes Balears,4970,2024
+ES70,Canarias,ES30,Madrid,4846,2024
+ES61,Andalucía,ES70,Canarias,4840,2024
+ES61,Andalucía,ES53,Illes Balears,4812,2024
+ES11,Galicia,ES30,Madrid,4678,2024
+ES51,Cataluña,ES24,Aragón,4622,2024
+ES52,C. Valenciana,ES42,Castilla-La Mancha,4385,2024
+ES53,Illes Balears,ES61,Andalucía,4376,2024
+ES70,Canarias,ES61,Andalucía,4256,2024
+ES42,Castilla-La Mancha,ES61,Andalucía,4237,2024
+ES24,Aragón,ES51,Cataluña,4056,2024
+ES53,Illes Balears,ES51,Cataluña,4039,2024
+ES61,Andalucía,ES42,Castilla-La Mancha,3957,2024
+ES30,Madrid,ES53,Illes Balears,3769,2024
+ES61,Andalucía,ES62,Murcia,3715,2024
+ES53,Illes Balears,ES52,C. Valenciana,3699,2024
+ES43,Extremadura,ES30,Madrid,3618,2024
+ES62,Murcia,ES61,Andalucía,3307,2024
+ES61,Andalucía,ES41,Castilla y León,3302,2024
+ES30,Madrid,ES43,Extremadura,3220,2024
+ES30,Madrid,ES12,Asturias,3175,2024
+ES51,Cataluña,ES70,Canarias,3161,2024
+ES51,Cataluña,ES11,Galicia,3102,2024
+ES70,Canarias,ES51,Cataluña,3066,2024
+ES24,Aragón,ES52,C. Valenciana,3021,2024
+ES51,Cataluña,ES41,Castilla y León,2987,2024
+ES52,C. Valenciana,ES53,Illes Balears,2966,2024
+ES41,Castilla y León,ES52,C. Valenciana,2958,2024
+ES30,Madrid,ES21,País Vasco,2924,2024
+ES21,País Vasco,ES41,Castilla y León,2901,2024
+ES21,País Vasco,ES30,Madrid,2834,2024
+ES62,Murcia,ES30,Madrid,2803,2024
+ES53,Illes Balears,ES30,Madrid,2802,2024
+ES41,Castilla y León,ES61,Andalucía,2795,2024
+ES43,Extremadura,ES61,Andalucía,2690,2024
+ES24,Aragón,ES30,Madrid,2689,2024
+ES30,Madrid,ES62,Murcia,2676,2024
+ES70,Canarias,ES52,C. Valenciana,2647,2024
+ES61,Andalucía,ES11,Galicia,2633,2024
+ES41,Castilla y León,ES21,País Vasco,2626,2024
+ES30,Madrid,ES24,Aragón,2592,2024
+ES41,Castilla y León,ES51,Cataluña,2516,2024
+ES51,Cataluña,ES42,Castilla-La Mancha,2458,2024
+ES11,Galicia,ES51,Cataluña,2450,2024
+ES52,C. Valenciana,ES24,Aragón,2424,2024
+ES42,Castilla-La Mancha,ES51,Cataluña,2398,2024
+ES61,Andalucía,ES24,Aragón,2296,2024
+ES52,C. Valenciana,ES41,Castilla y León,2276,2024
+ES61,Andalucía,ES43,Extremadura,2234,2024
+ES11,Galicia,ES61,Andalucía,2170,2024
+ES70,Canarias,ES11,Galicia,2166,2024
+ES11,Galicia,ES70,Canarias,2166,2024
+ES12,Asturias,ES30,Madrid,2056,2024
+ES61,Andalucía,ES21,País Vasco,2035,2024
+ES51,Cataluña,ES21,País Vasco,1998,2024
+ES52,C. Valenciana,ES70,Canarias,1985,2024
+ES13,Cantabria,ES21,País Vasco,1976,2024
+ES42,Castilla-La Mancha,ES41,Castilla y León,1976,2024
+ES21,País Vasco,ES13,Cantabria,1946,2024
+ES62,Murcia,ES51,Cataluña,1825,2024
+ES30,Madrid,ES13,Cantabria,1810,2024
+ES11,Galicia,ES41,Castilla y León,1805,2024
+ES11,Galicia,ES52,C. Valenciana,1796,2024
+ES41,Castilla y León,ES11,Galicia,1755,2024
+ES21,País Vasco,ES51,Cataluña,1730,2024
+ES51,Cataluña,ES62,Murcia,1705,2024
+ES24,Aragón,ES61,Andalucía,1689,2024
+ES42,Castilla-La Mancha,ES62,Murcia,1659,2024
+ES52,C. Valenciana,ES11,Galicia,1647,2024
+ES62,Murcia,ES42,Castilla-La Mancha,1638,2024
+ES41,Castilla y León,ES42,Castilla-La Mancha,1614,2024
+ES41,Castilla y León,ES12,Asturias,1612,2024
+ES21,País Vasco,ES61,Andalucía,1489,2024
+ES22,Navarra,ES30,Madrid,1427,2024
+ES21,País Vasco,ES22,Navarra,1425,2024
+ES51,Cataluña,ES12,Asturias,1421,2024
+ES64,Melilla,ES61,Andalucía,1410,2024
+ES22,Navarra,ES21,País Vasco,1398,2024
+ES13,Cantabria,ES30,Madrid,1395,2024
+ES52,C. Valenciana,ES21,País Vasco,1389,2024
+ES12,Asturias,ES41,Castilla y León,1347,2024
+ES21,País Vasco,ES52,C. Valenciana,1340,2024
+ES63,Ceuta,ES61,Andalucía,1330,2024
+ES51,Cataluña,ES43,Extremadura,1291,2024
+ES70,Canarias,ES41,Castilla y León,1286,2024
+ES61,Andalucía,ES12,Asturias,1257,2024
+ES41,Castilla y León,ES70,Canarias,1234,2024
+ES61,Andalucía,ES63,Ceuta,1229,2024
+ES70,Canarias,ES53,Illes Balears,1229,2024
+ES41,Castilla y León,ES13,Cantabria,1190,2024
+ES52,C. Valenciana,ES12,Asturias,1177,2024
+ES43,Extremadura,ES41,Castilla y León,1167,2024
+ES41,Castilla y León,ES24,Aragón,1145,2024
+ES42,Castilla-La Mancha,ES70,Canarias,1084,2024
+ES30,Madrid,ES22,Navarra,1077,2024
+ES61,Andalucía,ES64,Melilla,1066,2024
+ES24,Aragón,ES41,Castilla y León,1060,2024
+ES53,Illes Balears,ES70,Canarias,1047,2024
+ES42,Castilla-La Mancha,ES24,Aragón,1034,2024
+ES11,Galicia,ES12,Asturias,1023,2024
+ES53,Illes Balears,ES11,Galicia,1014,2024
+ES70,Canarias,ES42,Castilla-La Mancha,1008,2024
+ES12,Asturias,ES11,Galicia,1007,2024
+ES43,Extremadura,ES42,Castilla-La Mancha,1006,2024
+ES21,País Vasco,ES23,La Rioja,997,2024
+ES13,Cantabria,ES41,Castilla y León,969,2024
+ES41,Castilla y León,ES43,Extremadura,960,2024
+ES22,Navarra,ES23,La Rioja,946,2024
+ES22,Navarra,ES24,Aragón,925,2024
+ES42,Castilla-La Mancha,ES43,Extremadura,908,2024
+ES21,País Vasco,ES11,Galicia,903,2024
+ES24,Aragón,ES22,Navarra,891,2024
+ES43,Extremadura,ES51,Cataluña,888,2024
+ES42,Castilla-La Mancha,ES11,Galicia,885,2024
+ES22,Navarra,ES51,Cataluña,884,2024
+ES70,Canarias,ES21,País Vasco,878,2024
+ES51,Cataluña,ES22,Navarra,872,2024
+ES21,País Vasco,ES70,Canarias,872,2024
+ES61,Andalucía,ES22,Navarra,859,2024
+ES11,Galicia,ES53,Illes Balears,858,2024
+ES53,Illes Balears,ES42,Castilla-La Mancha,857,2024
+ES42,Castilla-La Mancha,ES53,Illes Balears,856,2024
+ES23,La Rioja,ES22,Navarra,855,2024
+ES12,Asturias,ES51,Cataluña,795,2024
+ES11,Galicia,ES21,País Vasco,794,2024
+ES53,Illes Balears,ES41,Castilla y León,791,2024
+ES23,La Rioja,ES21,País Vasco,772,2024
+ES12,Asturias,ES61,Andalucía,762,2024
+ES24,Aragón,ES42,Castilla-La Mancha,759,2024
+ES62,Murcia,ES53,Illes Balears,756,2024
+ES22,Navarra,ES61,Andalucía,744,2024
+ES41,Castilla y León,ES53,Illes Balears,741,2024
+ES43,Extremadura,ES52,C. Valenciana,741,2024
+ES62,Murcia,ES41,Castilla y León,729,2024
+ES12,Asturias,ES52,C. Valenciana,727,2024
+ES70,Canarias,ES12,Asturias,718,2024
+ES70,Canarias,ES62,Murcia,699,2024
+ES70,Canarias,ES24,Aragón,691,2024
+ES61,Andalucía,ES13,Cantabria,673,2024
+ES24,Aragón,ES70,Canarias,671,2024
+ES62,Murcia,ES11,Galicia,645,2024
+ES52,C. Valenciana,ES43,Extremadura,644,2024
+ES22,Navarra,ES52,C. Valenciana,643,2024
+ES51,Cataluña,ES13,Cantabria,641,2024
+ES24,Aragón,ES21,País Vasco,636,2024
+ES53,Illes Balears,ES62,Murcia,630,2024
+ES41,Castilla y León,ES23,La Rioja,625,2024
+ES62,Murcia,ES70,Canarias,624,2024
+ES23,La Rioja,ES30,Madrid,613,2024
+ES30,Madrid,ES23,La Rioja,609,2024
+ES41,Castilla y León,ES62,Murcia,608,2024
+ES52,C. Valenciana,ES22,Navarra,603,2024
+ES11,Galicia,ES42,Castilla-La Mancha,594,2024
+ES42,Castilla-La Mancha,ES21,País Vasco,577,2024
+ES62,Murcia,ES24,Aragón,573,2024
+ES53,Illes Balears,ES12,Asturias,570,2024
+ES12,Asturias,ES70,Canarias,566,2024
+ES21,País Vasco,ES24,Aragón,563,2024
+ES13,Cantabria,ES51,Cataluña,552,2024
+ES42,Castilla-La Mancha,ES12,Asturias,545,2024
+ES13,Cantabria,ES61,Andalucía,544,2024
+ES22,Navarra,ES41,Castilla y León,527,2024
+ES61,Andalucía,ES23,La Rioja,523,2024
+ES23,La Rioja,ES41,Castilla y León,523,2024
+ES11,Galicia,ES24,Aragón,512,2024
+ES53,Illes Balears,ES21,País Vasco,504,2024
+ES11,Galicia,ES62,Murcia,504,2024
+ES43,Extremadura,ES70,Canarias,501,2024
+ES13,Cantabria,ES12,Asturias,500,2024
+ES21,País Vasco,ES53,Illes Balears,498,2024
+ES53,Illes Balears,ES43,Extremadura,486,2024
+ES41,Castilla y León,ES22,Navarra,476,2024
+ES51,Cataluña,ES23,La Rioja,473,2024
+ES24,Aragón,ES53,Illes Balears,467,2024
+ES21,País Vasco,ES12,Asturias,466,2024
+ES13,Cantabria,ES52,C. Valenciana,461,2024
+ES52,C. Valenciana,ES13,Cantabria,460,2024
+ES12,Asturias,ES21,País Vasco,459,2024
+ES62,Murcia,ES21,País Vasco,453,2024
+ES24,Aragón,ES11,Galicia,449,2024
+ES53,Illes Balears,ES24,Aragón,445,2024
+ES12,Asturias,ES13,Cantabria,437,2024
+ES43,Extremadura,ES53,Illes Balears,428,2024
+ES23,La Rioja,ES51,Cataluña,424,2024
+ES21,País Vasco,ES43,Extremadura,413,2024
+ES23,La Rioja,ES52,C. Valenciana,405,2024
+ES24,Aragón,ES62,Murcia,402,2024
+ES21,País Vasco,ES42,Castilla-La Mancha,397,2024
+ES70,Canarias,ES43,Extremadura,387,2024
+ES13,Cantabria,ES70,Canarias,381,2024
+ES43,Extremadura,ES21,País Vasco,381,2024
+ES24,Aragón,ES23,La Rioja,372,2024
+ES62,Murcia,ES22,Navarra,370,2024
+ES13,Cantabria,ES11,Galicia,362,2024
+ES64,Melilla,ES30,Madrid,354,2024
+ES42,Castilla-La Mancha,ES22,Navarra,342,2024
+ES52,C. Valenciana,ES23,La Rioja,336,2024
+ES12,Asturias,ES53,Illes Balears,335,2024
+ES70,Canarias,ES13,Cantabria,326,2024
+ES23,La Rioja,ES24,Aragón,323,2024
+ES64,Melilla,ES52,C. Valenciana,321,2024
+ES43,Extremadura,ES11,Galicia,307,2024
+ES42,Castilla-La Mancha,ES13,Cantabria,303,2024
+ES22,Navarra,ES11,Galicia,285,2024
+ES12,Asturias,ES42,Castilla-La Mancha,281,2024
+ES43,Extremadura,ES24,Aragón,278,2024
+ES22,Navarra,ES70,Canarias,277,2024
+ES64,Melilla,ES51,Cataluña,276,2024
+ES51,Cataluña,ES64,Melilla,267,2024
+ES21,País Vasco,ES62,Murcia,267,2024
+ES23,La Rioja,ES61,Andalucía,266,2024
+ES24,Aragón,ES12,Asturias,264,2024
+ES62,Murcia,ES12,Asturias,256,2024
+ES30,Madrid,ES64,Melilla,249,2024
+ES70,Canarias,ES22,Navarra,246,2024
+ES22,Navarra,ES42,Castilla-La Mancha,241,2024
+ES24,Aragón,ES13,Cantabria,239,2024
+ES11,Galicia,ES13,Cantabria,238,2024
+ES63,Ceuta,ES30,Madrid,237,2024
+ES11,Galicia,ES43,Extremadura,229,2024
+ES53,Illes Balears,ES22,Navarra,225,2024
+ES22,Navarra,ES53,Illes Balears,212,2024
+ES24,Aragón,ES43,Extremadura,211,2024
+ES53,Illes Balears,ES13,Cantabria,210,2024
+ES11,Galicia,ES22,Navarra,208,2024
+ES43,Extremadura,ES62,Murcia,200,2024
+ES64,Melilla,ES70,Canarias,199,2024
+ES52,C. Valenciana,ES64,Melilla,198,2024
+ES62,Murcia,ES43,Extremadura,198,2024
+ES12,Asturias,ES62,Murcia,184,2024
+ES13,Cantabria,ES42,Castilla-La Mancha,182,2024
+ES22,Navarra,ES62,Murcia,181,2024
+ES12,Asturias,ES24,Aragón,177,2024
+ES30,Madrid,ES63,Ceuta,177,2024
+ES43,Extremadura,ES12,Asturias,176,2024
+ES13,Cantabria,ES24,Aragón,175,2024
+ES13,Cantabria,ES53,Illes Balears,172,2024
+ES42,Castilla-La Mancha,ES23,La Rioja,168,2024
+ES70,Canarias,ES64,Melilla,165,2024
+ES11,Galicia,ES23,La Rioja,164,2024
+ES22,Navarra,ES13,Cantabria,157,2024
+ES22,Navarra,ES12,Asturias,148,2024
+ES62,Murcia,ES23,La Rioja,147,2024
+ES23,La Rioja,ES11,Galicia,145,2024
+ES12,Asturias,ES43,Extremadura,143,2024
+ES23,La Rioja,ES13,Cantabria,140,2024
+ES62,Murcia,ES13,Cantabria,138,2024
+ES13,Cantabria,ES23,La Rioja,129,2024
+ES70,Canarias,ES23,La Rioja,127,2024
+ES12,Asturias,ES22,Navarra,121,2024
+ES64,Melilla,ES24,Aragón,118,2024
+ES23,La Rioja,ES70,Canarias,117,2024
+ES64,Melilla,ES41,Castilla y León,112,2024
+ES13,Cantabria,ES22,Navarra,111,2024
+ES53,Illes Balears,ES23,La Rioja,107,2024
+ES43,Extremadura,ES13,Cantabria,107,2024
+ES63,Ceuta,ES51,Cataluña,106,2024
+ES12,Asturias,ES23,La Rioja,102,2024
+ES43,Extremadura,ES22,Navarra,102,2024
+ES51,Cataluña,ES63,Ceuta,95,2024
+ES23,La Rioja,ES42,Castilla-La Mancha,93,2024
+ES63,Ceuta,ES52,C. Valenciana,93,2024
+ES13,Cantabria,ES62,Murcia,91,2024
+ES64,Melilla,ES62,Murcia,90,2024
+ES22,Navarra,ES43,Extremadura,88,2024
+ES42,Castilla-La Mancha,ES64,Melilla,85,2024
+ES52,C. Valenciana,ES63,Ceuta,85,2024
+ES23,La Rioja,ES53,Illes Balears,84,2024
+ES13,Cantabria,ES43,Extremadura,82,2024
+ES62,Murcia,ES64,Melilla,80,2024
+ES23,La Rioja,ES62,Murcia,80,2024
+ES64,Melilla,ES42,Castilla-La Mancha,76,2024
+ES23,La Rioja,ES12,Asturias,73,2024
+ES23,La Rioja,ES43,Extremadura,72,2024
+ES43,Extremadura,ES23,La Rioja,70,2024
+ES64,Melilla,ES63,Ceuta,68,2024
+ES64,Melilla,ES53,Illes Balears,67,2024
+ES41,Castilla y León,ES64,Melilla,64,2024
+ES64,Melilla,ES11,Galicia,63,2024
+ES70,Canarias,ES63,Ceuta,61,2024
+ES42,Castilla-La Mancha,ES63,Ceuta,59,2024
+ES63,Ceuta,ES70,Canarias,58,2024
+ES63,Ceuta,ES42,Castilla-La Mancha,58,2024
+ES63,Ceuta,ES41,Castilla y León,56,2024
+ES63,Ceuta,ES24,Aragón,52,2024
+ES24,Aragón,ES64,Melilla,49,2024
+ES53,Illes Balears,ES64,Melilla,48,2024
+ES24,Aragón,ES63,Ceuta,44,2024
+ES63,Ceuta,ES53,Illes Balears,42,2024
+ES63,Ceuta,ES64,Melilla,42,2024
+ES41,Castilla y León,ES63,Ceuta,35,2024
+ES11,Galicia,ES64,Melilla,35,2024
+ES63,Ceuta,ES43,Extremadura,34,2024
+ES43,Extremadura,ES64,Melilla,33,2024
+ES64,Melilla,ES21,País Vasco,33,2024
+ES63,Ceuta,ES21,País Vasco,30,2024
+ES53,Illes Balears,ES63,Ceuta,29,2024
+ES21,País Vasco,ES63,Ceuta,26,2024
+ES21,País Vasco,ES64,Melilla,26,2024
+ES64,Melilla,ES43,Extremadura,26,2024
+ES64,Melilla,ES22,Navarra,26,2024
+ES63,Ceuta,ES11,Galicia,25,2024
+ES63,Ceuta,ES62,Murcia,25,2024
+ES62,Murcia,ES63,Ceuta,22,2024
+ES64,Melilla,ES12,Asturias,22,2024
+ES43,Extremadura,ES63,Ceuta,21,2024
+ES11,Galicia,ES63,Ceuta,20,2024
+ES12,Asturias,ES64,Melilla,18,2024
+ES23,La Rioja,ES64,Melilla,17,2024
+ES22,Navarra,ES63,Ceuta,16,2024
+ES64,Melilla,ES13,Cantabria,16,2024
+ES64,Melilla,ES23,La Rioja,16,2024
+ES13,Cantabria,ES63,Ceuta,14,2024
+ES13,Cantabria,ES64,Melilla,14,2024
+ES12,Asturias,ES63,Ceuta,9,2024
+ES63,Ceuta,ES22,Navarra,9,2024
+ES63,Ceuta,ES12,Asturias,8,2024
+ES22,Navarra,ES64,Melilla,7,2024
+ES23,La Rioja,ES63,Ceuta,5,2024
+ES63,Ceuta,ES13,Cantabria,5,2024
+ES63,Ceuta,ES23,La Rioja,4,2024

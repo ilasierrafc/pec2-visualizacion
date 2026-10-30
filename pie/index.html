@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mix eléctrico 2025 · Pie chart</title>
+  <meta name="description" content="Pie chart de la generación eléctrica en España en 2025 por tecnología (Red Eléctrica): las renovables ya superan la mitad.">
+  <link rel="stylesheet" href="../assets/estilo.css">
+  <style>
+    :root {
+      --pie-eolica: #1baf7a;
+      --pie-solar: #eda100;
+      --pie-hidraulica: #2a78d6;
+      --pie-gas: #6f6d67;
+      --pie-nuclear: #b9b7af;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:where(:not([data-theme="light"])) {
+        --pie-eolica: #199e70;
+        --pie-solar: #c98500;
+        --pie-hidraulica: #3987e5;
+        --pie-gas: #8a8880;
+        --pie-nuclear: #55544f;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --pie-eolica: #199e70;
+      --pie-solar: #c98500;
+      --pie-hidraulica: #3987e5;
+      --pie-gas: #8a8880;
+      --pie-nuclear: #55544f;
+    }
+
+    .grafico { margin: 0; }
+
+    .clave {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      margin: 0 0 12px;
+      font-size: 15px;
+      color: var(--texto-2);
+    }
+
+    .clave .grupo { display: inline-flex; align-items: center; gap: 8px; }
+    .clave .puntos { display: inline-flex; gap: 3px; }
+    .clave strong { color: var(--texto); font-size: 20px; font-weight: 650; }
+
+    .porcion { cursor: pointer; transition: opacity 120ms ease; }
+    .porcion:focus { outline: none; }
+    .porcion:focus-visible { stroke: var(--texto); stroke-width: 2px; }
+
+    .leyenda-compacta {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .leyenda-compacta li { display: flex; align-items: center; gap: 8px; }
+    .leyenda-compacta .valores { margin-left: auto; color: var(--texto-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+    .tooltip .clave-linea {
+      display: inline-block;
+      width: 12px;
+      height: 3px;
+      border-radius: 2px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    tfoot td { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <nav class="migas" aria-label="Navegación">
+      <a href="../">PEC 2 · Visualización de datos</a>
+      <span>Técnica 1 de 3 · Pie chart</span>
+    </nav>
+
+    <h1>Las renovables ya generan más de la mitad de la electricidad en España</h1>
+    <p class="subtitulo" id="subtitulo">Estructura de la generación eléctrica nacional en 2025 por tecnología.</p>
+
+    <div class="clave" id="clave"></div>
+
+    <figure class="tarjeta grafico" id="grafico" aria-label="Gráfico de sectores con la generación eléctrica en España en 2025 por tecnología"></figure>
+
+    <p class="nota" id="nota"></p>
+
+    <details class="tabla">
+      <summary>Ver los datos en una tabla</summary>
+      <div class="contenedor-tabla">
+        <table id="tabla">
+          <caption class="sr-only">Generación eléctrica nacional en 2025 por tecnología</caption>
+          <thead>
+            <tr>
+              <th scope="col">Categoría</th>
+              <th scope="col">Grupo</th>
+              <th scope="col" class="num">TWh</th>
+              <th scope="col" class="num">%</th>
+              <th scope="col">Detalle</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+    </details>
+
+    <dl class="ficha">
+      <div><dt>Técnica</dt><dd>Pie chart (gráfico de sectores) · Grupo I</dd></div>
+      <div><dt>Datos</dt><dd>Red Eléctrica (REData): estructura de la generación nacional 2025; 13 tecnologías agrupadas en 5 porciones</dd></div>
+      <div><dt>Herramienta</dt><dd>D3.js v7 · GitHub Pages</dd></div>
+      <div><dt>Por qué esta técnica</dt><dd>Parte de un todo con pocas categorías (≤ 5) que suman un 100 % con sentido</dd></div>
+    </dl>
+
+    <p class="fuente">Fuente: <a href="https://www.ree.es/es/datos/generacion/estructura-generacion">Red Eléctrica (REData, estructura de la generación, sistema eléctrico nacional, 2025)</a>. Elaboración propia.</p>
+  </div>
+
+  <div class="tooltip" role="tooltip" hidden></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="pie.js"></script>
+</body>
+</html>

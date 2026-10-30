@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Migraciones interiores 2024 · Flow map</title>
+  <meta name="description" content="Mapa de flujos con los cambios de residencia entre comunidades autónomas de España en 2024 (INE).">
+  <link rel="stylesheet" href="../assets/estilo.css">
+  <style>
+    :root {
+      --region: #e9e8e3;
+      --region-hover: #dddbd3;
+      --region-sel: #cfcdc4;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:where(:not([data-theme="light"])) {
+        --region: #2a2a28;
+        --region-hover: #343432;
+        --region-sel: #403f3c;
+      }
+    }
+    :root[data-theme="dark"] {
+      --region: #2a2a28;
+      --region-hover: #343432;
+      --region-sel: #403f3c;
+    }
+
+    .disposicion {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+    @media (min-width: 960px) {
+      .disposicion { grid-template-columns: minmax(0, 1fr) 300px; }
+    }
+
+    .grafico { margin: 0; padding: 8px; }
+
+    .controles input[type="range"] { width: 140px; }
+    .controles output { min-width: 2ch; font-variant-numeric: tabular-nums; color: var(--texto); }
+    #resumen { color: var(--texto); }
+    .leyenda-region { display: inline-flex; gap: 16px; }
+    .leyenda-region[hidden] { display: none; }
+    .clave { display: inline-flex; align-items: center; gap: 6px; }
+    .clave-linea { display: inline-block; width: 18px; height: 3px; border-radius: 2px; flex: none; }
+    .clave-linea.salida { background: var(--serie-azul); }
+    .clave-linea.llegada { background: var(--serie-naranja); }
+
+    .region {
+      fill: var(--region);
+      stroke: var(--superficie);
+      stroke-width: 1px;
+      vector-effect: non-scaling-stroke;
+      cursor: pointer;
+    }
+    .region:hover { fill: var(--region-hover); }
+    .region.seleccionada { fill: var(--region-sel); }
+    .region:focus { outline: none; }
+    .region:focus-visible { stroke: var(--texto); stroke-width: 2px; }
+
+    .marco { fill: none; stroke: var(--linea-base); stroke-width: 1px; vector-effect: non-scaling-stroke; }
+
+    .flujo .linea { fill: none; stroke-opacity: 0.55; stroke-linecap: butt; }
+    .flujo .punta { stroke: none; fill-opacity: 0.55; }
+    .flujo .golpe { fill: none; stroke: transparent; pointer-events: stroke; cursor: default; }
+    .con-foco .flujo { opacity: 0.25; }
+    .con-foco .flujo.activo { opacity: 1; }
+    .flujo.activo .linea { stroke-opacity: 0.9; }
+    .flujo.activo .punta { fill-opacity: 0.9; }
+
+    .ancla { fill: var(--texto-2); }
+    .ancla.activa { fill: var(--texto); }
+
+    .etiqueta-region {
+      font-size: calc(11px * var(--k, 1));
+      stroke-width: calc(3px * var(--k, 1));
+      fill: var(--texto-2);
+    }
+    .etiqueta-region.activa { fill: var(--texto); font-weight: 650; }
+    .estrecho .etiqueta-region.pequena { display: none; }
+
+    .texto-leyenda { font-size: calc(11px * var(--k, 1)); fill: var(--texto-2); }
+
+    .panel { font-size: 14px; }
+    .panel h2 { font-size: 17px; margin: 0 0 6px; line-height: 1.3; }
+    .panel h3 { font-size: 14px; margin: 14px 0 4px; display: flex; align-items: center; gap: 8px; }
+    .panel p { margin: 0 0 10px; color: var(--texto-2); }
+    .panel .cifra { margin: 0; font-size: 30px; font-weight: 650; line-height: 1.1; color: var(--texto); }
+    .panel dl { margin: 12px 0; display: grid; gap: 10px; }
+    .panel dl div { display: grid; gap: 1px; }
+    .panel dt { color: var(--texto-2); font-size: 13px; }
+    .panel dd { margin: 0; display: flex; justify-content: space-between; gap: 12px; }
+    .panel dd .num { font-weight: 600; }
+    .panel ol { margin: 0; padding-left: 22px; }
+    .panel li { margin: 2px 0; }
+    .panel li span { display: flex; justify-content: space-between; gap: 12px; }
+    .panel .cifras { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 8px 0 4px; }
+    .panel .cifras div { display: grid; }
+    .panel .cifras .valor { font-size: 18px; font-weight: 650; }
+    .panel .cifras .etiqueta { color: var(--texto-2); font-size: 13px; }
+    .panel button { margin-top: 14px; }
+
+    #tabla caption { text-align: left; font-size: 13px; color: var(--texto-2); padding: 0 8px 6px; }
+  </style>
+</head>
+<body>
+  <div class="pagina">
+    <nav class="migas">
+      <a href="../">PEC 2 · Visualización de datos</a>
+      <span>Técnica 2 de 3 · Flow map</span>
+    </nav>
+
+    <h1>Madrid protagoniza los mayores flujos de migración interior, pero es la comunidad que más población pierde</h1>
+    <p class="subtitulo">Cambios de residencia entre comunidades autónomas en 2024. Cada flecha va de la comunidad de origen a la de destino y su grosor es proporcional al número de personas.</p>
+
+    <div class="controles">
+      <label>Comunidad
+        <select id="comunidad">
+          <option value="">Todas</option>
+        </select>
+      </label>
+      <label>Flujos mostrados
+        <input type="range" id="numero" min="10" max="100" step="5" value="30">
+        <output id="numero-valor" for="numero">30</output>
+      </label>
+      <span id="resumen" aria-live="polite"></span>
+      <span id="leyenda-region" class="leyenda-region" hidden>
+        <span class="clave"><span class="clave-linea salida"></span>Salidas</span>
+        <span class="clave"><span class="clave-linea llegada"></span>Llegadas</span>
+      </span>
+    </div>
+
+    <div class="disposicion">
+      <figure class="tarjeta grafico" id="grafico" aria-label="Mapa de flujos de migración entre comunidades autónomas en 2024"></figure>
+      <aside class="tarjeta panel" id="panel" aria-live="polite"></aside>
+    </div>
+
+    <p class="nota"><strong>Cómo leer:</strong> cada flecha va de la comunidad de origen a la de destino y su grosor es proporcional al número de personas. <span id="nota-claves"></span> Un mapa de flujos se satura enseguida cuando se cruzan muchas líneas; por eso la vista muestra solo los mayores flujos y permite ver cada comunidad por separado.</p>
+
+    <details class="tabla">
+      <summary>Ver los datos en una tabla</summary>
+      <div class="contenedor-tabla">
+        <table id="tabla">
+          <caption></caption>
+          <thead>
+            <tr><th>Origen</th><th>Destino</th><th class="num">Personas</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </details>
+
+    <dl class="ficha">
+      <div><dt>Técnica</dt><dd>Flow map (mapa de flujos) · Grupo II</dd></div>
+      <div><dt>Datos</dt><dd>INE, Estadística de Migraciones y Cambios de Residencia 2024 (tabla 69741): matriz origen-destino de 19 comunidades y ciudades autónomas. Límites: Eurostat GISCO, NUTS 2 (2024)</dd></div>
+      <div><dt>Herramienta</dt><dd>D3.js v7 · GitHub Pages</dd></div>
+      <div><dt>Por qué esta técnica</dt><dd>Datos origen-destino con una magnitud y una posición geográfica</dd></div>
+    </dl>
+
+    <p class="fuente">Fuente: <a href="https://datos.gob.es/es/catalogo/ea0010587-migraciones-interautonomicas-por-ano-sexo-y-comunidad-autonoma-de-procedencia-y-destino-emcr-identificador-api-69741">INE, Estadística de Migraciones y Cambios de Residencia 2024 (tabla 69741)</a>. Límites administrativos: © EuroGeographics (Eurostat GISCO, NUTS 2024). Elaboración propia.</p>
+  </div>
+
+  <div class="tooltip" role="tooltip" hidden></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="flowmap.js"></script>
+</body>
+</html>

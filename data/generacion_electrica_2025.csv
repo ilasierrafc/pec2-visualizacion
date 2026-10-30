@@ -1,0 +1,6 @@
+categoria,grupo,mwh,porcentaje,detalle
+Eólica,Renovable,57383154,22.23,"Eólica 22,2 %"
+Solar,Renovable,52980740,20.53,"Solar fotovoltaica 19,1 % + Solar térmica 1,4 %"
+Hidráulica y otras renovables,Renovable,38159016,14.78,"Hidráulica 13,1 % + Otras renovables 1,5 % + Residuos renovables 0,2 %"
+Gas y otras no renovables,No renovable,57750419,22.37,"Ciclo combinado 15,0 % + Cogeneración 6,0 % + Carbón 0,6 % + Turbina de vapor 0,4 % + Residuos no renovables 0,4 % + Fuel + Gas 0,0 %"
+Nuclear,No renovable,51846903,20.09,"Nuclear 20,1 %"
